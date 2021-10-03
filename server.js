@@ -36,13 +36,13 @@ list.forEach( (x) => {
 */
 
 let list = [
-    "05-09-2012",
-    "30-07-2021"   
+    "05/09/2012",
+    "30/07/2021"   
 ]
 
 list.forEach( (x) => {
 
-    let result = tspar.strptime( x, '%d-%m-%Y' )
+    let result = tspar.strptime( x, '%d/%m/%Y' )
 
     console.log( result )
 
