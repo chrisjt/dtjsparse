@@ -92,6 +92,8 @@ let encodeDatetime = ( objDatetime ) => {
 // ----- strptime -----
 
 let objStrptime = {
+  'M': /(?<minute>\d\d)/.source,
+  'H': /(?<hour>\d\d)/.source,
   'd': /(?<day>\d\d)/.source,
   'm': /(?<month>\d\d)/.source,
   'Y': /(?<year>\d\d\d\d)/.source
@@ -100,7 +102,7 @@ let objStrptime = {
 let strptime = ( strDatetime, strStrptime ) => {
 
   //let regex__strptime = /(?<=%)\w/g
-  let regex__strptime = /((?<=%)\w*)(.(?!%)*)*/g
+  let regex__strptime = /((?<=%)\w)(.(?!%)*)*/g
 
   let regexString__strStrptime2 = ''
 
@@ -112,14 +114,18 @@ let strptime = ( strDatetime, strStrptime ) => {
 
   let string = ''
 
-  while ((array1 = regex1.exec( strStrptime )) !== null) {
+  
+
+  while ((array1 = regex__strptime.exec( strStrptime )) !== null) {
+
+    console.log( array1 )
 
     string += ( objStrptime[ array1[1] ] ) ? objStrptime[ array1[1] ] : array1[1]
     string += ( objStrptime[ array1[2] ] ) ? objStrptime[ array1[2] ] : array1[2]
 
   }
 
-
+  console.log( string )
 
 
 
